@@ -1,0 +1,4 @@
+[
+    {"name": "Item1", "code": "A1", "status": "Available", "itemId": "123"},
+    {"name": "Item2", "code": "A2", "status": "Available", "itemId": "124"}
+]

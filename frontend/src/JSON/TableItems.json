@@ -1,0 +1,23 @@
+{"__collections__":[
+    {
+       "ItemId": 1,
+       "ItemName": "Wire",
+       "Status": "Borrowed",
+       "DateBorrowed": "December 5, 2023",
+       "ReturnDate": "December 13,2023"
+    },
+    {
+       "ItemId": 2,
+       "ItemName": "Keyboard",
+       "Status": "Borrowed",
+       "DateBorrowed": "December 10, 2023",
+       "ReturnDate": "December 15,2023"
+    },
+    {
+       "ItemId": 3,
+       "ItemName": "Mouse",
+       "Status": "Returned",
+       "DateBorrowed": "December 1, 2023",
+       "ReturnDate": "December 11,2023"
+    }
+]}
