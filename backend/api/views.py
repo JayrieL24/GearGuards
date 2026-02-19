@@ -1,5 +1,6 @@
 from django.contrib.auth import get_user_model
 from django.db.models import Count, Q, F
+from django.views.decorators.csrf import csrf_exempt
 from rest_framework import status
 from rest_framework.authtoken.models import Token
 from rest_framework.decorators import api_view, permission_classes
@@ -44,6 +45,7 @@ def health_check(request):
     return Response({"status": "ok", "service": "django-backend"})
 
 
+@csrf_exempt
 @api_view(["POST"])
 def register(request):
     serializer = RegisterSerializer(data=request.data)
@@ -60,6 +62,7 @@ def register(request):
     )
 
 
+@csrf_exempt
 @api_view(["POST"])
 @permission_classes([AllowAny])
 def login(request):
