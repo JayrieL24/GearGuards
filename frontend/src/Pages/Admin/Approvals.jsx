@@ -7,7 +7,7 @@ import {
   getStoredUser,
   getToken,
   rejectRegistration,
-} from "../../lib/auth";
+} from "../../lib/auth.js";
 import "../../CSS/AdminApprovals.css";
 
 const navItems = [

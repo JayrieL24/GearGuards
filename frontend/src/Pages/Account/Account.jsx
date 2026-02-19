@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { Password } from "primereact/password";
 import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
-import { clearSession, getStoredUser, getToken } from "../../lib/auth";
+import { clearSession, getStoredUser, getToken } from "../../lib/auth.js";
 
 const navItems = [
   { label: "Dashboard", icon: "pi pi-home", path: "/borrower/dashboard" },

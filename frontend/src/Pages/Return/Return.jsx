@@ -4,7 +4,7 @@ import { Dropdown } from "primereact/dropdown";
 import { InputNumber } from "primereact/inputnumber";
 import { Button } from "primereact/button";
 import itemsData from "../../JSON/Items.json";
-import { clearSession, getStoredUser, getToken } from "../../lib/auth";
+import { clearSession, getStoredUser, getToken } from "../../lib/auth.js";
 
 const navItems = [
   { label: "Dashboard", icon: "pi pi-home", path: "/borrower/dashboard" },

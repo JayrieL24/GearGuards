@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { getStoredUser, getToken, loginRequest } from "../../lib/auth";
+import { getStoredUser, getToken, loginRequest } from "../../lib/auth.js";
 
 function Login() {
   const navigate = useNavigate();

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { registerRequest } from "../../lib/auth";
+import { registerRequest } from "../../lib/auth.js";
 
 function Register() {
   const [form, setForm] = useState({

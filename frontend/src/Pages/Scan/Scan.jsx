@@ -1,5 +1,5 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import { clearSession } from "../../lib/auth";
+import { clearSession } from "../../lib/auth.js";
 
 const navItems = [
   { label: "Dashboard", icon: "pi pi-home", path: "/dashboard" },
