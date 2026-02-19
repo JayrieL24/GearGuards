@@ -17,6 +17,10 @@ ALLOWED_HOSTS = [
     if host.strip()
 ]
 
+# Always allow Render domain
+if "gearguard-backend-g4b1.onrender.com" not in ALLOWED_HOSTS and "*" not in ALLOWED_HOSTS:
+    ALLOWED_HOSTS.append("gearguard-backend-g4b1.onrender.com")
+
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
