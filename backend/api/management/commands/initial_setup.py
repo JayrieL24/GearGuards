@@ -13,17 +13,11 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         self.stdout.write('Starting initial setup...')
         
-        # Check if setup has already been run
-        with connection.cursor() as cursor:
-            cursor.execute("""
-                SELECT EXISTS (
-                    SELECT FROM information_schema.tables 
-                    WHERE table_name = 'api_userprofile'
-                )
-            """)
-            tables_exist = cursor.fetchone()[0]
+        # Check if setup has already been run by checking if UserProfile table exists
+        from django.db import connection as db_conn
+        tables = db_conn.introspection.table_names()
         
-        if tables_exist:
+        if 'api_userprofile' in tables:
             self.stdout.write(self.style.WARNING('Setup already completed. Skipping.'))
             return
         
