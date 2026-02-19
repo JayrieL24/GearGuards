@@ -5,8 +5,8 @@ services:
     region: oregon
     plan: free
     branch: main
-    buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn config.wsgi:application
+    buildCommand: pip install -r requirements.txt && python manage.py collectstatic --no-input
+    startCommand: python manage.py initial_setup && gunicorn config.wsgi:application
     envVars:
       - key: PYTHON_VERSION
         value: 3.12.0

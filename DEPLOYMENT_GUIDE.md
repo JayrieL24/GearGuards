@@ -1,13 +1,13 @@
 # GearGuard Deployment Guide
 
-Complete guide to deploy GearGuard with Supabase, Render (Backend), and Vercel (Frontend).
+Complete guide to deploy GearGuard with Supabase, Render (Backend), and Netlify (Frontend).
 
 ## Prerequisites
 
 - ✅ Supabase account with database configured
 - ✅ GitHub account
 - ✅ Render account (free tier)
-- ✅ Vercel account (free tier)
+- ✅ Netlify account (free tier)
 - ✅ Google Gemini API key
 
 ## Part 1: Push Code to GitHub
@@ -93,47 +93,48 @@ python manage.py add_sample_inventory
 
 **Note**: Migrations must be run from the Shell after deployment because database connections aren't available during the build phase.
 
-## Part 3: Deploy Frontend to Vercel
+## Part 3: Deploy Frontend to Netlify
 
-### 1. Create Vercel Account
-1. Go to https://vercel.com
+### 1. Create Netlify Account
+1. Go to https://netlify.com
 2. Sign up with GitHub
-3. Authorize Vercel to access your repositories
+3. Authorize Netlify to access your repositories
 
 ### 2. Import Project
-1. Click "Add New..." → "Project"
-2. Import your `gearguard-system` repository
-3. Configure:
-   - **Framework Preset**: Vite
-   - **Root Directory**: `frontend`
-   - **Build Command**: `npm run build`
-   - **Output Directory**: `dist`
+1. Click "Add new site" → "Import an existing project"
+2. Choose "Deploy with GitHub"
+3. Select your `gearguard-system` repository
+4. Configure build settings:
+   - **Base directory**: `frontend`
+   - **Build command**: `npm run build`
+   - **Publish directory**: `frontend/dist`
 
 ### 3. Add Environment Variable
 
-Click "Environment Variables" and add:
+Before deploying, click "Show advanced" → "New variable" and add:
 
 ```
-VITE_API_BASE_URL=https://gearguard-backend.onrender.com
+VITE_API_BASE_URL=https://gearguard-backend-g4b1.onrender.com
 ```
 
 Replace with your actual Render backend URL.
 
 ### 4. Deploy
-1. Click "Deploy"
+1. Click "Deploy site"
 2. Wait 2-3 minutes
-3. Your frontend will be live at: `https://gearguard-system.vercel.app` (or similar)
+3. Your frontend will be live at: `https://random-name-12345.netlify.app`
+4. You can customize the site name in Site settings → Change site name
 
 ### 5. Update Backend CORS Settings
 
-Now that you have your Vercel URL, go back to Render:
+Now that you have your Netlify URL, go back to Render:
 1. Go to your backend service
 2. Click "Environment"
 3. Update these variables:
    ```
-   CORS_ALLOWED_ORIGINS=https://your-actual-vercel-url.vercel.app
-   CSRF_TRUSTED_ORIGINS=https://your-actual-vercel-url.vercel.app
-   DJANGO_ALLOWED_HOSTS=gearguard-backend.onrender.com
+   CORS_ALLOWED_ORIGINS=https://your-actual-site.netlify.app
+   CSRF_TRUSTED_ORIGINS=https://your-actual-site.netlify.app
+   DJANGO_ALLOWED_HOSTS=gearguard-backend-g4b1.onrender.com
    ```
 4. Click "Save Changes"
 5. Service will auto-redeploy
@@ -141,7 +142,7 @@ Now that you have your Vercel URL, go back to Render:
 ## Part 4: Test Your Deployment
 
 ### 1. Access Your Application
-Visit your Vercel URL: `https://your-app.vercel.app`
+Visit your Netlify URL: `https://your-site.netlify.app`
 
 ### 2. Test Login
 Try logging in with sample accounts:
@@ -175,14 +176,14 @@ Try logging in with sample accounts:
 ### Frontend Issues
 
 **Problem**: Can't connect to backend
-- Verify `VITE_API_BASE_URL` is set correctly
+- Verify `VITE_API_BASE_URL` is set correctly in Netlify
 - Check if backend is running on Render
 - Open browser console for error details
 
 **Problem**: Build fails
 - Check Node.js version (should be 18+)
 - Verify all dependencies are in package.json
-- Check Vercel build logs
+- Check Netlify build logs
 
 ### Database Issues
 
@@ -224,7 +225,7 @@ All sensitive data should be in:
 - First request after sleep: ~30 seconds to wake up
 - Upgrade to paid tier for always-on service
 
-### Vercel (Frontend)
+### Netlify (Frontend)
 - Always on, no cold starts
 - Automatic HTTPS
 - Global CDN for fast loading
@@ -245,7 +246,7 @@ All sensitive data should be in:
 ### Frontend Updates
 1. Make changes locally
 2. Commit and push to GitHub
-3. Vercel auto-deploys
+3. Netlify auto-deploys
 4. Changes live in ~2 minutes
 
 ## Cost Breakdown
@@ -253,7 +254,7 @@ All sensitive data should be in:
 ### Free Tier (Current Setup)
 - **Supabase**: Free (500MB database, 2GB bandwidth)
 - **Render**: Free (750 hours/month, sleeps after 15 min)
-- **Vercel**: Free (100GB bandwidth, unlimited sites)
+- **Netlify**: Free (100GB bandwidth, unlimited sites)
 - **Google Gemini API**: Free tier (60 requests/minute)
 
 **Total Cost**: $0/month 🎉
@@ -261,9 +262,9 @@ All sensitive data should be in:
 ### Paid Tier (For Production)
 - **Supabase Pro**: $25/month (8GB database, 50GB bandwidth)
 - **Render Starter**: $7/month (always-on, 512MB RAM)
-- **Vercel Pro**: $20/month (1TB bandwidth, analytics)
+- **Netlify Pro**: $19/month (400GB bandwidth, analytics)
 
-**Total Cost**: ~$52/month for production-ready setup
+**Total Cost**: ~$51/month for production-ready setup
 
 ## Support
 
@@ -277,8 +278,8 @@ If you encounter issues:
 
 After deployment, update these:
 
-- **Frontend**: https://_____.vercel.app
-- **Backend**: https://gearguard-backend.onrender.com
+- **Frontend**: https://_____.netlify.app
+- **Backend**: https://gearguard-backend-g4b1.onrender.com
 - **Database**: Supabase (already configured)
 
 ---
