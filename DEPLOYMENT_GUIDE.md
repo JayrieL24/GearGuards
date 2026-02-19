@@ -85,10 +85,13 @@ GOOGLE_GEMINI_API_KEY=AIzaSyBBJSqgRLDScPjrzvIm5_yq-WeS4GH1IBo
 After deployment, go to Render dashboard → Shell and run:
 
 ```bash
+python manage.py migrate
 python manage.py add_sample_users
 python manage.py setup_categories
 python manage.py add_sample_inventory
 ```
+
+**Note**: Migrations must be run from the Shell after deployment because database connections aren't available during the build phase.
 
 ## Part 3: Deploy Frontend to Vercel
 
