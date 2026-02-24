@@ -7,7 +7,7 @@ GearGuard is a comprehensive equipment tracking and management system designed f
 ## Key Features
 
 ### 1. Role-Based Access Control
-- **Admin**: Full system control, user approvals, inventory management, analytics
+- **Admin**: Full system control, user approvals, inventory management,  analytics using ai
 - **Handler**: Process borrow/return transactions, scan items, manage walk-in requests
 - **Student/Personnel**: Browse equipment, request borrows, track their borrowed items
 
