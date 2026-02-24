@@ -7,6 +7,7 @@ function Login() {
   const [form, setForm] = useState({ username: "", password: "" });
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   useEffect(() => {
     const token = getToken();
@@ -79,6 +80,16 @@ function Login() {
             <p>Sign in with your approved account.</p>
           </header>
 
+          <div className="demo-credentials">
+            <p style={{ fontWeight: 600, marginBottom: '8px', color: '#0f766e' }}>Demo Accounts:</p>
+            <ul style={{ fontSize: '0.875rem', lineHeight: '1.6', color: '#475569' }}>
+              <li><strong>admin1</strong> (ADMIN) - AdminPass123!</li>
+              <li><strong>handler1</strong> (HANDLER/Staff) - HandlerPass123!</li>
+              <li><strong>student1</strong> (STUDENT) - StudentPass123!</li>
+              <li><strong>personnel1</strong> (PERSONNEL) - PersonnelPass123!</li>
+            </ul>
+          </div>
+
           <form onSubmit={onSubmit} className="auth-form">
             <div className="field-group">
               <label htmlFor="username">Username</label>
@@ -87,14 +98,39 @@ function Login() {
 
             <div className="field-group">
               <label htmlFor="password">Password</label>
-              <input
-                id="password"
-                name="password"
-                type="password"
-                value={form.password}
-                onChange={onChange}
-                required
-              />
+              <div style={{ position: 'relative' }}>
+                <input
+                  id="password"
+                  name="password"
+                  type={showPassword ? "text" : "password"}
+                  value={form.password}
+                  onChange={onChange}
+                  required
+                  style={{ paddingRight: '40px' }}
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  style={{
+                    position: 'absolute',
+                    right: '10px',
+                    top: '50%',
+                    transform: 'translateY(-50%)',
+                    background: 'none',
+                    border: 'none',
+                    cursor: 'pointer',
+                    color: '#64748b',
+                    fontSize: '1.2rem',
+                    padding: '4px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
+                  }}
+                  aria-label={showPassword ? "Hide password" : "Show password"}
+                >
+                  {showPassword ? '👁️' : '👁️‍🗨️'}
+                </button>
+              </div>
             </div>
 
             {error ? <p className="auth-error">{error}</p> : null}
