@@ -120,7 +120,7 @@ function Login() {
                     border: 'none',
                     cursor: 'pointer',
                     color: '#64748b',
-                    fontSize: '1.2rem',
+                    fontSize: '1.1rem',
                     padding: '4px',
                     display: 'flex',
                     alignItems: 'center',
@@ -128,7 +128,7 @@ function Login() {
                   }}
                   aria-label={showPassword ? "Hide password" : "Show password"}
                 >
-                  {showPassword ? '👁️' : '👁️‍🗨️'}
+                  <i className={showPassword ? "pi pi-eye-slash" : "pi pi-eye"} />
                 </button>
               </div>
             </div>
